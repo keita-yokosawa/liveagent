@@ -7,70 +7,26 @@
 <body>
   本文
 </body>
-　
-<style type='text/css'>
-    .embeddedServiceHelpButton .helpButton .uiButton {
-        background-color: #cc0033;
-        font-family: "Courier New", sans-serif;
-    }
-    .embeddedServiceHelpButton .helpButton .uiButton:focus {
-        outline: 1px solid #cc0033;
-    }
-</style>
 
-<script type='text/javascript' src='https://service.force.com/embeddedservice/5.0/esw.min.js'></script>
 <script type='text/javascript'>
-    var initESW = function(gslbBaseURL) {
-        embedded_svc.settings.displayHelpButton = true; //または false
-        embedded_svc.settings.language = ''; //たとえば、「en」または「en-US」を入力します
-        
-        embedded_svc.settings.chatbotAvatarImgURL =　'https://occ-crown.file.force.com/sfc/dist/version/renditionDownload?rendition=ORIGINAL_Png&versionId=0685h00000Kxi6r&operationContext=DELIVERY&contentId=05T5h00000ymemk&page=0&d=/a/5h000001FHPG/VSytNPVIC5PtCqJR8TPS_3GkLtE9FhHsu_BjQQHJ9u8&oid=00D5h000004dHm5&dpt=null&viewId=';
+	function initEmbeddedMessaging() {
+		try {
+			embeddedservice_bootstrap.settings.language = 'ja'; // For example, enter 'en' or 'en-US'
 
-        embedded_svc.settings.defaultMinimizedText =  'チャットで相談する'; //(エキスパートとチャットにデフォルト設定)
-        //embedded_svc.settings.disabledMinimizedText = '...'; //(エージェントがオフラインにデフォルト設定)
-
-        //embedded_svc.settings.loadingText = ''; //(読み込み中にデフォルト設定)
-        //embedded_svc.settings.storageDomain = 'yourdomain.com'; //(リリースのドメインを設定して、訪問者がチャットセッション中にサブドメインを移動できるようにします)
-
-        // チャット の設定
-        //embedded_svc.settings.directToButtonRouting = function(prechatFormData) {
-            // Dynamically changes the button ID based on what the visitor enters in the pre-chat form.
-            // Returns a valid button ID.
-        //};
-        //embedded_svc.settings.prepopulatedPrechatFields = {}; //事前チャットフォームの項目の自動入力を設定
-        //embedded_svc.settings.fallbackRouting = []; //ボタン ID、ユーザ ID、または userId_buttonId の配列
-        //embedded_svc.settings.offlineSupportMinimizedText = '...'; //(デフォルトは [お問い合わせ])
-
-        embedded_svc.settings.enabledFeatures = ['LiveAgent'];
-        embedded_svc.settings.entryFeature = 'LiveAgent';
-
-        embedded_svc.init(
-            'https://occ-crown--staging.sandbox.my.salesforce.com',
-            'https://occ-crown--staging.sandbox.my.salesforce-sites.com/liveAgentSetupFlow',
-            gslbBaseURL,
-            '00D1m0000001jyd',
-            'Chat_Agents',
-            {
-                baseLiveAgentContentURL: 'https://c.la2-c1cs-ukb.salesforceliveagent.com/content',
-                deploymentId: '5725h000000ZCbA',
-                buttonId: '5735h000000ZCHA',
-                baseLiveAgentURL: 'https://d.la2-c1cs-ukb.salesforceliveagent.com/chat',
-                eswLiveAgentDevName: 'Chat_Agents',
-                isOfflineSupportEnabled: false
-            }
-        );
-    };
-
-    if (!window.embedded_svc) {
-        var s = document.createElement('script');
-        s.setAttribute('src', 'https://occ-crown--staging.sandbox.my.salesforce.com/embeddedservice/5.0/esw.min.js');
-        s.onload = function() {
-            initESW(null);
-        };
-        document.body.appendChild(s);
-    } else {
-        initESW('https://service.force.com');
-    }
+			embeddedservice_bootstrap.init(
+				'00D0l0000003gBr',
+				'MessagingWebReleaseTest',
+				'https://occ-crown--partial.sandbox.my.site.com/ESWMessagingWebReleaseTes1750307669001',
+				{
+					scrt2URL: 'https://occ-crown--partial.sandbox.my.salesforce-scrt.com'
+				}
+			);
+		} catch (err) {
+			console.error('Error loading Embedded Messaging: ', err);
+		}
+	};
 </script>
+<script type='text/javascript' src='https://occ-crown--partial.sandbox.my.site.com/ESWMessagingWebReleaseTes1750307669001/assets/js/bootstrap.min.js' onload='initEmbeddedMessaging()'></script>
+
 </html>
 
