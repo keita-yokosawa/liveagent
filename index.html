@@ -11,9 +11,10 @@
 
 <script type='text/javascript'>
 	var crmContractNo = '0010000394-000';
+	console.log(crmContractNo);
 	window.addEventListener("onEmbeddedMessagingReady", () => {
     	console.log("Received the onEmbeddedMessagingReady event…");
-    	console.log("the contractNo is " &crmContractNo);
+    	console.log("the contractNo is "  + crmContractNo);
 	    embeddedservice_bootstrap.prechatAPI.setHiddenPrechatFields({"contractNo" : crmContractNo});
 　　});
 	function initEmbeddedMessaging() {
