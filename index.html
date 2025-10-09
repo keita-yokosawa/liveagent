@@ -10,33 +10,10 @@
 </body>
 
 <script type='text/javascript'>
- 
-       var crmContractNo = '0010000394-000';
- 
-        if (crmContractNo != null) {
-           embeddedservice_bootstrap.settings.extraPrechatInfo = [
-                {
-                "entityName":"CRM_Contract__c","showOnCreate":true,
-                "linkToEntityName":"Case","linkToEntityField":"ContractInformationRef__c",
-                "saveToTranscript":"ContractInformation__c",
-                "entityFieldMaps":[
-                    {"doCreate":false,"doFind":true,"fieldName":"ContractNo__c","isExactMatch":true,"label":"Contract_No"}
-                    ]
-                }
-    ];
- 
-    embeddedservice_bootstrap.settings.extraPrechatFormDetails = [
-                {"label":"Contract_No","value":crmContractNo,"transcriptFields":[],"displayToAgent":true},
-                {"label":"RegisterSystemLst","value":"3","transcriptFields":[],"displayToAgent":true},
-                {"label":"FromChat","value":"1","transcriptFields":[],"displayToAgent":true},
-                {"label":"Origin","value":"16","transcriptFields":[],"displayToAgent":true}
-                ];
-        }
- 
 	function initEmbeddedMessaging() {
 		try {
 			embeddedservice_bootstrap.settings.language = 'ja'; // For example, enter 'en' or 'en-US'
- 
+
 			embeddedservice_bootstrap.init(
 				'00D0l0000003gBr',
 				'MessagingWebReleaseTest',
@@ -50,6 +27,6 @@
 		}
 	};
 </script>
-<script type='text/javascript' src='https://occ-crown--partial.sandbox.my.site.com/ESWMessagingWebReleaseTes1750307669001/assets/js/bootstrap.min.js%27' onload='initEmbeddedMessaging()'></script>
+<script type='text/javascript' src='https://occ-crown--partial.sandbox.my.site.com/ESWMessagingWebReleaseTes1750307669001/assets/js/bootstrap.min.js' onload='initEmbeddedMessaging()'></script>
 
 </html>
