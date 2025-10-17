@@ -1,19 +1,43 @@
-<script type='text/javascript'>
-	function initEmbeddedMessaging() {
-		try {
-			embeddedservice_bootstrap.settings.language = 'ja'; // For example, enter 'en' or 'en-US'
+<html>
 
-			embeddedservice_bootstrap.init(
-				'00D0l0000003gBr',
-				'MessagingWebReleaseTest',
-				'https://occ-crown--partial.sandbox.my.site.com/ESWMessagingWebRelease',
-				{
-					scrt2URL: 'https://occ-crown--partial.sandbox.my.salesforce-scrt.com'
-				}
-			);
-		} catch (err) {
-			console.error('Error loading Embedded Messaging: ', err);
-		}
-	};
-</script>
-<script type='text/javascript' src='https://occ-crown--partial.sandbox.my.site.com/ESWMessagingWebRelease/assets/js/bootstrap.min.js' onload='initEmbeddedMessaging()'></script>
+  <head>
+    <title>CHAT PAGE FOR MEMBER</title>
+  </head>
+
+  <body>
+    <style type='text/css'>
+        .embeddedServiceHelpButton .helpButton .uiButton {
+            background-color: #cc0033;
+            font-family: "Courier New", sans-serif;
+        }
+        .embeddedServiceHelpButton .helpButton .uiButton:focus {
+        outline: 1px solid #cc0033;
+        }
+    </style>
+
+	<script type='text/javascript'>
+		var crmContractNo;
+		window.addEventListener("onEmbeddedMessagingReady", () => {
+		    embeddedservice_bootstrap.prechatAPI.setHiddenPrechatFields({"contractNo" : crmContractNo});
+		});
+		function initEmbeddedMessaging() {
+			try {
+				embeddedservice_bootstrap.settings.language = 'ja'; // For example, enter 'en' or 'en-US'
+
+				embeddedservice_bootstrap.init(
+					'00D0l0000003gBr',
+					'MessagingWebReleaseTest',
+					'https://occ-crown--partial.sandbox.my.site.com/ESWMessagingWebRelease',
+					{
+						scrt2URL: 'https://occ-crown--partial.sandbox.my.salesforce-scrt.com'
+					}
+				);
+			} catch (err) {
+				console.error('Error loading Embedded Messaging: ', err);
+			}
+		};
+	</script>
+	<script type='text/javascript' src='https://occ-crown--partial.sandbox.my.site.com/ESWMessagingWebRelease/assets/js/bootstrap.min.js' onload='initEmbeddedMessaging()'></script>
+  </body>
+  
+</html>
