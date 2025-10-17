@@ -16,10 +16,13 @@
     </style>
 
 	<script type='text/javascript'>
-//		var crmContractNo;
-		var crmContractNo = '0010000394-000';
+		var crmContractNo;
+		var fields = {};
+		if (crmContractNo) {
+		  fields.contractNo = crmContractNo;
+		}
 		window.addEventListener("onEmbeddedMessagingReady", () => {
-		    embeddedservice_bootstrap.prechatAPI.setHiddenPrechatFields({"contractNo" : crmContractNo});
+			embeddedservice_bootstrap.prechatAPI.setHiddenPrechatFields(fields);
 		});
 		function initEmbeddedMessaging() {
 			try {
