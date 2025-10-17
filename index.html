@@ -1,28 +1,4 @@
-<!DOCTYPE html>
-<html lang="ja">
-<head>
-  <meta charset="UTF-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1">
-  <title>test</title>
-</head>
-<body>
-  Messagingチャットテスト
-</body>
-
 <script type='text/javascript'>
-	var crmContractNo = '0010000394-000';
-//	var crmContractNo;
-	var fields = {};
-	if (crmContractNo) {
-	  fields.contractNo = crmContractNo;
-	}
-	console.log(crmContractNo);
-	window.addEventListener("onEmbeddedMessagingReady", () => {
-    	console.log("Received the onEmbeddedMessagingReady event…");
-    	console.log("the contractNo is "  + crmContractNo);
-//	    embeddedservice_bootstrap.prechatAPI.setHiddenPrechatFields({"contractNo" : crmContractNo});
-		embeddedservice_bootstrap.prechatAPI.setHiddenPrechatFields(fields);
-　　});
 	function initEmbeddedMessaging() {
 		try {
 			embeddedservice_bootstrap.settings.language = 'ja'; // For example, enter 'en' or 'en-US'
@@ -41,5 +17,3 @@
 	};
 </script>
 <script type='text/javascript' src='https://occ-crown--partial.sandbox.my.site.com/ESWMessagingWebRelease/assets/js/bootstrap.min.js' onload='initEmbeddedMessaging()'></script>
-
-</html>
