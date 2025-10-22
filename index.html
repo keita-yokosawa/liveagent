@@ -5,23 +5,16 @@
   </head>
 
   <body>
-    <style type='text/css'>
-        .embeddedServiceHelpButton .helpButton .uiButton {
-            background-color: #cc0033;
-            font-family: "Courier New", sans-serif;
-        }
-        .embeddedServiceHelpButton .helpButton .uiButton:focus {
-        outline: 1px solid #cc0033;
-        }
-    </style>
-
 	<script type='text/javascript'>
-	var crmContractNo = '0010000394-000';
+		var crmContractNo = '0010000394-000';
 		var fields = {};
-		if (crmContractNo) {
-		  fields.contractNo = crmContractNo;
-		}
+		console.log("crmContractNo: "  + crmContractNo);
 		window.addEventListener("onEmbeddedMessagingReady", () => {
+	    	console.log("Received the onEmbeddedMessagingReady event…");
+	    	console.log("the contractNo is "  + crmContractNo);
+	    	if (crmContractNo) {
+		  		fields.contractNo = crmContractNo;
+			}
 			embeddedservice_bootstrap.prechatAPI.setHiddenPrechatFields(fields);
 		});
 		function initEmbeddedMessaging() {
