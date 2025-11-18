@@ -27,4 +27,3 @@
 			}
 		};
 
-	<script type='text/javascript' src='https://occ-crown--partial.sandbox.my.site.com/ESWMessagingWebRelease/assets/js/bootstrap.min.js' onload='initEmbeddedMessaging()'></script>
