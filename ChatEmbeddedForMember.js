@@ -1,4 +1,4 @@
-	<script type='text/javascript'>
+
 		var crmContractNo;
 		var fields = {};
 		console.log("crmContractNo: "  + crmContractNo);
@@ -26,5 +26,5 @@
 				console.error('Error loading Embedded Messaging: ', err);
 			}
 		};
-	</script>
+
 	<script type='text/javascript' src='https://occ-crown--partial.sandbox.my.site.com/ESWMessagingWebRelease/assets/js/bootstrap.min.js' onload='initEmbeddedMessaging()'></script>
