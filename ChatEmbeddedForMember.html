@@ -6,6 +6,22 @@
 
   <body>
 	<script type='text/javascript'>
+
+       function embeddedMsgLoaded() {
+        var embeddedMsg = document.querySelector('.embedded-messaging');
+        if (!embeddedMsg) {
+          window.setTimeout(embeddedMsgLoaded, 500);
+          return;
+        }
+        console.log('height=' + embeddedMsg.clientHeight );
+        console.log('clientWidth=' + embeddedMsg.clientWidth );
+        var height = embeddedMsg.clientHeight + 24;
+        var width = embeddedMsg.clientWidth + 36;
+        window.parent.postMessage({frameHeight: 580,frameWidth: 320}, '*'); 
+      }
+      window.onload = embeddedMsgLoaded();
+
+		
 		var crmContractNo;
 		var fields = {};
 		console.log("crmContractNo: "  + crmContractNo);
