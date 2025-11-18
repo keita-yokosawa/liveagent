@@ -9,6 +9,7 @@
 
        function embeddedMsgLoaded() {
         var embeddedMsg = document.querySelector('.embedded-messaging');
+	    console.log(embeddedMsg);
         if (!embeddedMsg) {
           window.setTimeout(embeddedMsgLoaded, 500);
           return;
