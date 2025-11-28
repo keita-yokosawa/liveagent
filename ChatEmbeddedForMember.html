@@ -36,6 +36,7 @@
 		   var embeddedMsg1 = document.getElementById('embeddedMessagingModalOverlay');
 		   if(embeddedMsg1){
 			   console.log('find embeddedMessagingModalOverlay');
+			   embeddedMsg1.style.display = 'none';
 			   console.log(embeddedMsg1);
 		   }else{
 		       console.log('this is not embeddedMessagingModalOverlay');
@@ -47,6 +48,7 @@
 		window.addEventListener("onEmbeddedMessagingReady", () => {
 	    	console.log("Received the onEmbeddedMessagingReady event…");
 	    	console.log("the contractNo is "  + crmContractNo);
+			test();
 	    	if (crmContractNo) {
 		  		fields.contractNo = crmContractNo;
 			}
