@@ -19,19 +19,21 @@
           window.setTimeout(embeddedMsgLoaded(2), 500);
           return;
         }
-        console.log('height=' + embeddedMsg.height );
-        console.log('clientWidth=' + embeddedMsg.width );
-        var height = embeddedMsg.clientHeight + 24;
-        var width = embeddedMsg.clientWidth + 36;
-		// var embeddedMsgMV = document.getElementById('embeddedMessagingModalOverlay');
-		// if (!embeddedMsgMV) {
-		// 	embeddedMsgMV.remove();
-		// 	console.log('embeddedMessagingModalOverlay is deleted!');
-		// }
-		embeddedMsg.style.display = 'none';
-		window.parent.postMessage({frameHeight: 480,frameWidth: 321}, '*'); 
-		//embeddedMsg.style.height="100%";
-        //window.parent.postMessage({frameHeight: 580,frameWidth: 320}, '*'); 
+		if(embeddedMsg) { 
+            console.log('height=' + embeddedMsg.height );
+            console.log('clientWidth=' + embeddedMsg.width );
+            var height = embeddedMsg.clientHeight + 24;
+            var width = embeddedMsg.clientWidth + 36;
+		    // var embeddedMsgMV = document.getElementById('embeddedMessagingModalOverlay');
+		    // if (!embeddedMsgMV) {
+		    // 	embeddedMsgMV.remove();
+		    // 	console.log('embeddedMessagingModalOverlay is deleted!');
+		    // }
+		    embeddedMsg.style.display = 'none';
+		    window.parent.postMessage({frameHeight: 480,frameWidth: 321}, '*'); 
+		    //embeddedMsg.style.height="100%";
+            //window.parent.postMessage({frameHeight: 580,frameWidth: 320}, '*'); 
+		}
       }
 		
 		var crmContractNo;
