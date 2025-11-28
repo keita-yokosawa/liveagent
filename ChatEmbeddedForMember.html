@@ -31,7 +31,16 @@
             //window.parent.postMessage({frameHeight: 580,frameWidth: 320}, '*'); 
 		//}
       }
-		
+		window.onload = test();
+		function test(){
+		   var embeddedMsg1 = document.getElementById('embeddedMessagingModalOverlay');
+		   if(embeddedMsg1){
+			   console.log('find embeddedMessagingModalOverlay');
+			   console.log(embeddedMsg1);
+		   }else{
+		       console.log('this is not embeddedMessagingModalOverlay');
+		   }
+		}
 		var crmContractNo;
 		var fields = {};
 		console.log("crmContractNo: "  + crmContractNo);
