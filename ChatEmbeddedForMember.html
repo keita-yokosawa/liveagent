@@ -19,8 +19,7 @@
         var height = embeddedMsg.clientHeight + 24;
         var width = embeddedMsg.clientWidth + 36;
 		console.log(embeddedMsg.style.background-color);
-		embeddedMsg.classList.replace('isMaximized', '');
-		//embeddedMsg.style.display = 'none';
+		embeddedMsg.style.display = 'none';
 		window.parent.postMessage({frameHeight: 480,frameWidth: 321}, '*'); 
         //window.parent.postMessage({frameHeight: 580,frameWidth: 320}, '*'); 
       }
