@@ -21,8 +21,6 @@
 		window.parent.postMessage({frameHeight: 480,frameWidth: 321}, '*'); 
         //window.parent.postMessage({frameHeight: 580,frameWidth: 320}, '*'); 
       }
-      window.onload = embeddedMsgLoaded();
-
 		
 		var crmContractNo;
 		var fields = {};
@@ -35,6 +33,13 @@
 			}
 			embeddedservice_bootstrap.prechatAPI.setHiddenPrechatFields(fields);
 		});
+
+		window.addEventListener("onEmbeddedMessagingButtonClicked", () => {
+	    	console.log("Fires the first time the chat button is clicked by the end user.…");
+	    	console.log("the contractNo is "  + crmContractNo);
+　　　　　　　embeddedMsgLoaded()
+		});
+		
 		function initEmbeddedMessaging() {
 			try {
 				embeddedservice_bootstrap.settings.language = 'ja'; // For example, enter 'en' or 'en-US'
