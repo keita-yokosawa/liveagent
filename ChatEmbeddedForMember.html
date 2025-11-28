@@ -12,7 +12,7 @@
 		//var embeddedMsg = document.getElementById('embeddedMessagingFrame');
 	    console.log(embeddedMsg);
         if (!embeddedMsg) {
-          window.setTimeout(embeddedMsgLoaded(), 500);
+          window.setTimeout(embeddedMsgLoaded, 500);
           return;
         }
 		//if(embeddedMsg) { 
@@ -47,9 +47,9 @@
 		window.addEventListener("onEmbeddedMessagingButtonClicked", () => {
 	    	console.log("Fires the first time the chat button is clicked by the end user.…");
 	    	console.log("the contractNo is "  + crmContractNo);
-　　　　　　　embeddedMsgLoaded()
+　　　　　　　embeddedMsgLoaded();
 		});
-		//window.onload=embeddedMsgLoaded(1);
+		
 		
 		// window.addEventListener("onEmbeddedMessagingWindowMinimized", () => {
 	 //    	console.log(" end user clicks the Close (X) button.…");
