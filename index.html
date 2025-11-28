@@ -34,7 +34,7 @@
     }
 
 
-     calculateChatWidgetFrameSize(originFrameSize) {
+   function  calculateChatWidgetFrameSize(originFrameSize) {
        const adjustedHeight = originFrameSize.frameHeight;
        const adjustedWidth = originFrameSize.frameWidth;
        let originFrameSize = {
@@ -44,18 +44,18 @@
        return originFrameSize;
      }
 
-     updateChatWidgetFrameSize(originFrameSize) {
+   function  updateChatWidgetFrameSize(originFrameSize) {
        if (!originFrameSize.frameHeight || !originFrameSize.frameWidth) {
          return;
        }
 
-       const { height, width } = this.calculateChatWidgetFrameSize(originFrameSize);
+       const frmSize = calculateChatWidgetFrameSize(originFrameSize);
        var chatWidgetFrame = document.getElementById("chat-widget-frame");
-       chatWidgetFrame.style.height = height;
-       chatWidgetFrame.style.width = width;
+       chatWidgetFrame.style.height = frmSize.frameHeight;
+       chatWidgetFrame.style.width = frmSize.frameWidth;
      }
 
-     callbackPostMessage(event) {
+   function  callbackPostMessage(event) {
        if (event.origin !== location.origin) {
          return;
        }
