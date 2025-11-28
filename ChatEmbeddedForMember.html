@@ -8,7 +8,7 @@
 	<script type='text/javascript'>
 
        function embeddedMsgLoaded() {
-        var embeddedMsg = document.querySelector('.embedded-messaging');
+        var embeddedMsg = document.querySelector('.embeddedMessagingFrame');
 	    console.log(embeddedMsg);
         if (!embeddedMsg) {
           window.setTimeout(embeddedMsgLoaded, 500);
@@ -18,7 +18,7 @@
         console.log('clientWidth=' + embeddedMsg.clientWidth );
         var height = embeddedMsg.clientHeight + 24;
         var width = embeddedMsg.clientWidth + 36;
-		window.parent.postMessage({frameHeight: 480,frameWidth: 321}, '*'); 
+		window.parent.postMessage({frameHeight: height,frameWidth: width}, '*'); 
         //window.parent.postMessage({frameHeight: 580,frameWidth: 320}, '*'); 
       }
       window.onload = embeddedMsgLoaded();
