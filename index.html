@@ -2,6 +2,84 @@
 
   <head>
     <title>CHAT PAGE FOR MEMBER</title>
+    <style scoped>
+#chat-widget-frame {
+  pointer-events: auto;
+}
+.chat-widget-section {
+  pointer-events: none;
+}
+.chat-widget-section {
+  bottom: 0px;
+  right: 310px;
+  position: fixed;
+  z-index: 998;
+}
+@media (max-width: 1024px) {
+  .chat-widget-section {
+    bottom: 0px;
+    right: 0px;
+    position: fixed;
+    z-index: 998;
+  }
+}
+</style>
+  <script>
+
+   window.onload = function() {
+            window.addEventListener("message", callbackPostMessage);
+    }
+    window.onunload = function() {
+            window.removeEventListener("message", callbackPostMessage);
+    }
+
+      /**
+      * チャットウィジェット表示サイズを計算
+      * @param {object} originFrameSize - 元になるフレームサイズ
+      * @return {object} - 計算後のフレームサイズ(px)
+      */
+     calculateChatWidgetFrameSize(originFrameSize) {
+       const adjustedHeight = originFrameSize.frameHeight;
+       const adjustedWidth = originFrameSize.frameWidth;
+
+       return {
+         height: adjustedHeight + 'px',
+         width: adjustedWidth + 'px',
+       }
+     },
+     /**
+      * チャットウィジェット表示サイズを更新
+      * @param {object} originFrameSize - 元になるフレームサイズ
+      */
+     updateChatWidgetFrameSize(originFrameSize) {
+       if (!originFrameSize.frameHeight || !originFrameSize.frameWidth) {
+         return;
+       }
+
+       const { height, width } = this.calculateChatWidgetFrameSize(originFrameSize);
+       var chatWidgetFrame = document.getElementById("chat-widget-frame");
+       chatWidgetFrame.style.height = height;
+       chatWidgetFrame.style.width = width;
+     },
+     /**
+      * メッセージ受信イベントのコールバック処理
+      * @param {object} event - イベント情報
+      */
+     callbackPostMessage(event) {
+       if (event.origin !== location.origin) {
+          originが違えば何もしない
+          ChatEmbeddedForMember.htmlは同一originに配置
+         return;
+       }
+
+       console.log('test000001');
+       console.log(event.data);
+       this.updateChatWidgetFrameSize(event.data);
+     }
+   }
+
+    
+  </script>
 
   </head>
 
