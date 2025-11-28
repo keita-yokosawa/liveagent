@@ -33,24 +33,17 @@
             window.removeEventListener("message", callbackPostMessage);
     }
 
-      /**
-      * チャットウィジェット表示サイズを計算
-      * @param {object} originFrameSize - 元になるフレームサイズ
-      * @return {object} - 計算後のフレームサイズ(px)
-      */
+
      calculateChatWidgetFrameSize(originFrameSize) {
        const adjustedHeight = originFrameSize.frameHeight;
        const adjustedWidth = originFrameSize.frameWidth;
 
        return {
          height: adjustedHeight + 'px',
-         width: adjustedWidth + 'px',
-       }
-     },
-     /**
-      * チャットウィジェット表示サイズを更新
-      * @param {object} originFrameSize - 元になるフレームサイズ
-      */
+         width: adjustedWidth + 'px'
+       };
+     }
+
      updateChatWidgetFrameSize(originFrameSize) {
        if (!originFrameSize.frameHeight || !originFrameSize.frameWidth) {
          return;
@@ -60,15 +53,10 @@
        var chatWidgetFrame = document.getElementById("chat-widget-frame");
        chatWidgetFrame.style.height = height;
        chatWidgetFrame.style.width = width;
-     },
-     /**
-      * メッセージ受信イベントのコールバック処理
-      * @param {object} event - イベント情報
-      */
+     }
+
      callbackPostMessage(event) {
        if (event.origin !== location.origin) {
-          originが違えば何もしない
-          ChatEmbeddedForMember.htmlは同一originに配置
          return;
        }
 
