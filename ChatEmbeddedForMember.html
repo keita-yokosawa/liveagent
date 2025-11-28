@@ -8,7 +8,8 @@
 	<script type='text/javascript'>
 
        function embeddedMsgLoaded() {
-        var embeddedMsg = document.getElementById('embeddedMessagingModalOverlay');
+        //var embeddedMsg = document.getElementById('embeddedMessagingModalOverlay');
+		var embeddedMsg = document.getElementById('embeddedMessagingFrame');
 	    console.log(embeddedMsg);
         if (!embeddedMsg) {
           window.setTimeout(embeddedMsgLoaded, 500);
@@ -18,8 +19,11 @@
         console.log('clientWidth=' + embeddedMsg.width );
         var height = embeddedMsg.clientHeight + 24;
         var width = embeddedMsg.clientWidth + 36;
+		var embeddedMsgMV = document.getElementById('embeddedMessagingModalOverlay');
+		if (!embeddedMsgMV) {
+			embeddedMsgMV.remove();
+		}
 		//embeddedMsg.style.display = 'none';
-		embeddedMsg.remove();
 		window.parent.postMessage({frameHeight: 480,frameWidth: 321}, '*'); 
 		//embeddedMsg.style.height="100%";
         //window.parent.postMessage({frameHeight: 580,frameWidth: 320}, '*'); 
