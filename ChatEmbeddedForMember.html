@@ -15,7 +15,7 @@
           window.setTimeout(embeddedMsgLoaded(), 500);
           return;
         }
-		if(embeddedMsg) { 
+		//if(embeddedMsg) { 
             console.log('height=' + embeddedMsg.height );
             console.log('clientWidth=' + embeddedMsg.width );
             var height = embeddedMsg.clientHeight + 24;
@@ -29,7 +29,7 @@
 		    window.parent.postMessage({frameHeight: 480,frameWidth: 321}, '*'); 
 		    //embeddedMsg.style.height="100%";
             //window.parent.postMessage({frameHeight: 580,frameWidth: 320}, '*'); 
-		}
+		//}
       }
 		
 		var crmContractNo;
