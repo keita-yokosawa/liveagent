@@ -7,16 +7,12 @@
   <body>
 	<script type='text/javascript'>
 
-       function embeddedMsgLoaded(iType) {
+       function embeddedMsgLoaded() {
         var embeddedMsg = document.getElementById('embeddedMessagingModalOverlay');
 		//var embeddedMsg = document.getElementById('embeddedMessagingFrame');
-		console.log('the iType = ' + iType);
-		if(iType == 1){
-			console.log('the window is reload!');
-		}
 	    console.log(embeddedMsg);
-        if (!embeddedMsg && iType == 2) {
-          window.setTimeout(embeddedMsgLoaded(2), 500);
+        if (!embeddedMsg) {
+          window.setTimeout(embeddedMsgLoaded(), 500);
           return;
         }
 		if(embeddedMsg) { 
@@ -51,9 +47,9 @@
 		window.addEventListener("onEmbeddedMessagingButtonClicked", () => {
 	    	console.log("Fires the first time the chat button is clicked by the end user.…");
 	    	console.log("the contractNo is "  + crmContractNo);
-　　　　　　　embeddedMsgLoaded(2)
+　　　　　　　embeddedMsgLoaded()
 		});
-		window.onload=embeddedMsgLoaded(1);
+		//window.onload=embeddedMsgLoaded(1);
 		
 		// window.addEventListener("onEmbeddedMessagingWindowMinimized", () => {
 	 //    	console.log(" end user clicks the Close (X) button.…");
