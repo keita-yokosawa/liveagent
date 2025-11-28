@@ -37,11 +37,11 @@
      calculateChatWidgetFrameSize(originFrameSize) {
        const adjustedHeight = originFrameSize.frameHeight;
        const adjustedWidth = originFrameSize.frameWidth;
-
-       return {
-         height: adjustedHeight + 'px',
-         width: adjustedWidth + 'px'
+       let originFrameSize = {
+           frameHeight: adjustedHeight + 'px',
+           frameWidth: adjustedWidth + 'px'
        };
+       return originFrameSize;
      }
 
      updateChatWidgetFrameSize(originFrameSize) {
