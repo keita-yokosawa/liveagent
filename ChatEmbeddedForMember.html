@@ -40,7 +40,7 @@
 			   window.parent.postMessage({frameHeight: 480,frameWidth: 321}, '*'); 
 			   console.log(embeddedMsg1);
 		   }else{
-			   window.setTimeout(test, 500);
+			   window.setsetTimeout(test, 500);
 		       console.log('this is not embeddedMessagingModalOverlay');
 		   }
 		}
@@ -69,10 +69,11 @@
     //        // Do something...
     //    });
 
-		document.addEventListener("DOMContentLoaded", () => {
-	    	console.log("DOMContentLoaded.…");
-　　　　　　　test();
-		});
+		// document.addEventListener("DOMContentLoaded", () => {
+	 //    	console.log("DOMContentLoaded.…");
+　　// 　　　　　test();
+		// });
+		window.onreload = test();
 		
 		
 		// window.addEventListener("onEmbeddedMessagingWindowMinimized", () => {
