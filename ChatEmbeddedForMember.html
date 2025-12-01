@@ -52,7 +52,7 @@
 		}
 		function reDefineSize(){
 		    const key = "child_iframe_loaded";
-			
+			console.log("localStorage__:" + localStorage.getItem(key));
 			if(localStorage.getItem(key)){
 				console.log("F5/Reload__" + localStorage.getItem(key));
 				test();
