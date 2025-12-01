@@ -35,7 +35,7 @@
 		let countTimeout = 0;
 		const maxExecutionsTimeout = 5;
 		
-		function test(){
+		function resetSizeAndBackground(){
 		   var embeddedMsg1 = document.getElementById('embeddedMessagingModalOverlay');
 		   countTimeout++;
 		   if(embeddedMsg1){
@@ -45,7 +45,7 @@
 			   console.log(embeddedMsg1);
 		   }else{
 			   if (countTimeout < maxExecutionsTimeout) {
-			       window.setTimeout(test, 500);
+			       window.setTimeout(resetSizeAndBackground, 500);
 			   }
 		       console.log('this is not embeddedMessagingModalOverlay');
 		   }
@@ -55,7 +55,7 @@
 			console.log("localStorage__:" + localStorage.getItem(key));
 			if(localStorage.getItem(key)){
 				console.log("F5/Reload__" + localStorage.getItem(key));
-				test();
+				resetSizeAndBackground();
 			}else{
 				console.log("初回ロード");
 				localStorage.setItem(key,"1");
