@@ -32,15 +32,21 @@
 		//}
       }
 		//window.onload = test();
+		let countTimeout = 0;
+		const maxExecutionsTimeout = 5;
+		
 		function test(){
 		   var embeddedMsg1 = document.getElementById('embeddedMessagingModalOverlay');
+		   countTimeout++;
 		   if(embeddedMsg1){
 			   console.log('find embeddedMessagingModalOverlay');
 			   embeddedMsg1.style.display = 'none';
 			   window.parent.postMessage({frameHeight: 480,frameWidth: 321}, '*'); 
 			   console.log(embeddedMsg1);
 		   }else{
-			   window.setTimeout(test, 500);
+			   if (countTimeout < maxExecutionsTimeout) {
+			       window.setTimeout(test, 500);
+			   }
 		       console.log('this is not embeddedMessagingModalOverlay');
 		   }
 		}
