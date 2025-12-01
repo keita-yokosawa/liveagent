@@ -37,6 +37,7 @@
 		   if(embeddedMsg1){
 			   console.log('find embeddedMessagingModalOverlay');
 			   embeddedMsg1.style.display = 'none';
+			   window.parent.postMessage({frameHeight: 480,frameWidth: 321}, '*'); 
 			   console.log(embeddedMsg1);
 		   }else{
 			   window.setTimeout(test, 500);
@@ -58,20 +59,22 @@
 		window.addEventListener("onEmbeddedMessagingButtonClicked", () => {
 	    	console.log("Fires the first time the chat button is clicked by the end user.…");
 	    	console.log("the contractNo is "  + crmContractNo);
-　　　　　　　//embeddedMsgLoaded();
+　　　　　　　embeddedMsgLoaded();
 		});
 
-	   window.addEventListener("onEmbeddedMessagingConversationStarted", (event) => {
-           console.log("Received the onEmbeddedMessagingConversationStarted event…");
-           console.log("Event detail: ", event.detail);
-           embeddedMsgLoaded();
-           // Do something...
-       });
+	   // window.addEventListener("onEmbeddedMessagingConversationStarted", (event) => {
+    //        console.log("Received the onEmbeddedMessagingConversationStarted event…");
+    //        console.log("Event detail: ", event.detail);
+    //        embeddedMsgLoaded();
+    //        // Do something...
+    //    });
 
 		document.addEventListener("DOMContentLoaded", () => {
 	    	console.log("DOMContentLoaded.…");
-　　　　　　　//test();
+　　　　　　　test();
 		});
+		window.onreload(){
+		}
 		
 		
 		// window.addEventListener("onEmbeddedMessagingWindowMinimized", () => {
