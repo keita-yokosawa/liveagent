@@ -31,7 +31,7 @@
             //window.parent.postMessage({frameHeight: 580,frameWidth: 320}, '*'); 
 		//}
       }
-		window.onload = test();
+		//window.onload = test();
 		function test(){
 		   var embeddedMsg1 = document.getElementById('embeddedMessagingModalOverlay');
 		   if(embeddedMsg1){
@@ -48,7 +48,6 @@
 		window.addEventListener("onEmbeddedMessagingReady", () => {
 	    	console.log("Received the onEmbeddedMessagingReady event…");
 	    	console.log("the contractNo is "  + crmContractNo);
-			test();
 	    	if (crmContractNo) {
 		  		fields.contractNo = crmContractNo;
 			}
@@ -59,6 +58,11 @@
 	    	console.log("Fires the first time the chat button is clicked by the end user.…");
 	    	console.log("the contractNo is "  + crmContractNo);
 　　　　　　　embeddedMsgLoaded();
+		});
+
+		window.addEventListener("DOMContentLoaded", () => {
+	    	console.log("DOMContentLoaded.…");
+　　　　　　　test();
 		});
 		
 		
