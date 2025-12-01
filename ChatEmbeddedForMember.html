@@ -58,12 +58,19 @@
 		window.addEventListener("onEmbeddedMessagingButtonClicked", () => {
 	    	console.log("Fires the first time the chat button is clicked by the end user.…");
 	    	console.log("the contractNo is "  + crmContractNo);
-　　　　　　　embeddedMsgLoaded();
+　　　　　　　//embeddedMsgLoaded();
 		});
+
+	   window.addEventListener("onEmbeddedMessagingConversationStarted", (event) => {
+           console.log("Received the onEmbeddedMessagingConversationStarted event…");
+           console.log("Event detail: ", event.detail);
+           embeddedMsgLoaded();
+           // Do something...
+       });
 
 		document.addEventListener("DOMContentLoaded", () => {
 	    	console.log("DOMContentLoaded.…");
-　　　　　　　test();
+　　　　　　　//test();
 		});
 		
 		
