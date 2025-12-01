@@ -44,6 +44,13 @@
 		       console.log('this is not embeddedMessagingModalOverlay');
 		   }
 		}
+		function reDefineSize(){
+		    const nav = performance.getEntriesByType("navigation")[0];
+			console.log("F5 Relaod");
+			if(nav.type == "reload"){
+				test();
+			}
+		}
 		var crmContractNo;
 		var fields = {};
 		console.log("crmContractNo: "  + crmContractNo);
@@ -73,7 +80,7 @@
 	 //    	console.log("DOMContentLoaded.…");
 　　// 　　　　　test();
 		// });
-		window.onreload = test();
+		window.onreload = reDefineSize();
 		
 		
 		// window.addEventListener("onEmbeddedMessagingWindowMinimized", () => {
