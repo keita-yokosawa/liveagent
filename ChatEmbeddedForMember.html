@@ -45,10 +45,14 @@
 		   }
 		}
 		function reDefineSize(){
-		    const nav = performance.getEntriesByType("navigation")[0];
-			console.log("F5 Relaod1" + nav.type );
-			if(nav.type == "reload"){
+		    const key = "child_iframe_loaded";
+			
+			if(localStorage.getItem(key)){
+				console.log("F5/Reload__" + localStorage.getItem(key));
 				test();
+			}else{
+				console.log("初回ロード");
+				localStorage.setItem(key,"1");
 			}
 		}
 		var crmContractNo;
