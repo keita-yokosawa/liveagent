@@ -46,7 +46,7 @@
 		}
 		function reDefineSize(){
 		    const nav = performance.getEntriesByType("navigation")[0];
-			console.log("F5 Relaod");
+			console.log("F5 Relaod" + nav.type );
 			if(nav.type == "reload"){
 				test();
 			}
