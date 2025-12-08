@@ -49,6 +49,16 @@
 				localStorage.setItem(key,"1");
 			}
 		}
+		function changeChatIconPosization(){
+			var chatIcon = document.getElementById('minimizedButton-21');
+			console.log(chatIcon);
+			if(chatIcon){
+				chatIcon.style.display = '';
+				console.log('OK');
+			}else{
+				console.log('can not find chatIcon....');
+			}
+		}
 		//契約番号を事前チャットに渡す
 		var crmContractNo;
 		var fields = {};
@@ -66,6 +76,12 @@
 	    	console.log("Fires the first time the chat button is clicked by the end user.…");
 	    	console.log("the contractNo is "  + crmContractNo);
 			embeddedMsgLoaded();
+		});
+	    //チャット最小化
+		window.addEventListener("onEmbeddedMessagingWindowMinimized", () => {
+	    	console.log("Fires when the messaging conversation window is minimized");
+	    	console.log("minimized the contractNo is "  + crmContractNo);
+			changeChatIconPosization();
 		});
 
 		//画面リロードイベント
