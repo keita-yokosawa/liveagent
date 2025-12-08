@@ -50,7 +50,9 @@
 			}
 		}
 		function changeChatIconPosization(){
-			var chatIcon = document.getElementById('minimizedButton-21');
+			var embededMsgFrm = document.getElementById('embeddedMessagingFrame');
+			var childWindowContent = embededMsgFrm.contentWindow;
+			var chatIcon = childWindowContent.document.getElementById('minimizedButton-21');
 			console.log(chatIcon);
 			if(chatIcon){
 				chatIcon.style.display = '';
