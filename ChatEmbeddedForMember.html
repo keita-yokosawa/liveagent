@@ -49,16 +49,17 @@
 				localStorage.setItem(key,"1");
 			}
 		}
-		function changeChatIconPosization(){
+		function changeChatWindowSize(){
 			var embededMsgFrm = document.getElementById('embeddedMessagingFrame');
-			var childWindowContent = embededMsgFrm.contentWindow;
-			var chatIcon = childWindowContent.document.getElementById('minimizedButton-21');
-			console.log(chatIcon);
-			if(chatIcon){
-				chatIcon.style.display = '';
-				console.log('OK');
+			if(embededMsgFrm){
+                var height = embededMsgFrm.clientHeight + 24;
+                var width = embededMsgFrm.clientWidth + 36;
+                window.parent.postMessage({
+                    frameHeight: height,
+                    frameWidth: width
+                 }, '*');
 			}else{
-				console.log('can not find chatIcon....');
+				console.log('can not find embeddedMessagingFrame....');
 			}
 		}
 		//契約番号を事前チャットに渡す
@@ -79,11 +80,15 @@
 	    	console.log("the contractNo is "  + crmContractNo);
 			embeddedMsgLoaded();
 		});
-	    //チャット最小化
+	    //チャット最小化onEmbeddedMessagingWindowClosed
 		window.addEventListener("onEmbeddedMessagingWindowMinimized", () => {
 	    	console.log("Fires when the messaging conversation window is minimized");
-	    	console.log("minimized the contractNo is "  + crmContractNo);
-			changeChatIconPosization();
+			changeChatWindowSize();
+		});
+	    //×ボタン
+		window.addEventListener("onEmbeddedMessagingWindowClosed", () => {
+	    	console.log("Fires when an end user clicks the Close (X) button");
+			changeChatWindowSize();
 		});
 
 		//画面リロードイベント
