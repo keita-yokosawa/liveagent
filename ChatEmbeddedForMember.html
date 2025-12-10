@@ -9,7 +9,6 @@
        //チャット開始ボタン押下時、ウィンドウサイズと背景色変更
        function embeddedMsgLoaded() {
         var embeddedMsg = document.getElementById('embeddedMessagingModalOverlay');
-	    console.log(embeddedMsg);
         if (!embeddedMsg) {
           window.setTimeout(embeddedMsgLoaded, 500);
           return;
