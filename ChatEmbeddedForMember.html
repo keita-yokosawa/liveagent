@@ -90,7 +90,10 @@
 	    //×ボタン
 		window.addEventListener("onEmbeddedMessagingWindowClosed", () => {
 	    	console.log("Fires when an end user clicks the Close (X) button");
-			changeChatWindowSize();
+            window.parent.postMessage({
+                frameHeight: 86,
+                frameWidth: 98
+            }, '*');
 		});
 	    //チャット最大化
 		window.addEventListener("onEmbeddedMessagingWindowMaximized", () => {
