@@ -54,6 +54,8 @@
 			if(embededMsgFrm){
                 var height = embededMsgFrm.clientHeight + 24;
                 var width = embededMsgFrm.clientWidth + 36;
+				console.log("clientHeight = " + height);
+				console.log("clientWidth = " + width);
                 window.parent.postMessage({
                     frameHeight: height,
                     frameWidth: width
@@ -85,11 +87,11 @@
 	    	console.log("Fires when the messaging conversation window is minimized");
 			changeChatWindowSize();
 		});
-	 //    //×ボタン
-		// window.addEventListener("onEmbeddedMessagingWindowClosed", () => {
-	 //    	console.log("Fires when an end user clicks the Close (X) button");
-		// 	changeChatWindowSize();
-		// });
+	    //×ボタン
+		window.addEventListener("onEmbeddedMessagingWindowClosed", () => {
+	    	console.log("Fires when an end user clicks the Close (X) button");
+			changeChatWindowSize();
+		});
 	    //チャット最大化
 		window.addEventListener("onEmbeddedMessagingWindowMaximized", () => {
 	    	console.log("Fires when the messaging conversation window is maximized.");
