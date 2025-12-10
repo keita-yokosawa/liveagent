@@ -80,7 +80,7 @@
 	    	console.log("the contractNo is "  + crmContractNo);
 			embeddedMsgLoaded();
 		});
-	    //チャット最小化onEmbeddedMessagingWindowClosed
+	    //チャット最小化
 		window.addEventListener("onEmbeddedMessagingWindowMinimized", () => {
 	    	console.log("Fires when the messaging conversation window is minimized");
 			changeChatWindowSize();
@@ -90,7 +90,11 @@
 	    	console.log("Fires when an end user clicks the Close (X) button");
 			changeChatWindowSize();
 		});
-
+	    //チャット最大化
+		window.addEventListener("onEmbeddedMessagingWindowMaximized", () => {
+	    	console.log("Fires when the messaging conversation window is maximized.");
+			embeddedMsgLoaded();
+		});
 		//画面リロードイベント
 		window.onreload = reDefineSize();
         //メッセージング初期化処理
