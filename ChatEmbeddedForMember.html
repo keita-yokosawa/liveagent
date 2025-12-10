@@ -52,7 +52,7 @@
 		function changeChatWindowSize(){
 			var embededMsgFrm = document.getElementById('embeddedMessagingFrame');
 			if(embededMsgFrm){
-                var height = embededMsgFrm.clientHeight + 24;
+                var height = embededMsgFrm.clientHeight + 30;
                 var width = embededMsgFrm.clientWidth + 36;
 				console.log("clientHeight = " + height);
 				console.log("clientWidth = " + width);
@@ -91,7 +91,7 @@
 		window.addEventListener("onEmbeddedMessagingWindowClosed", () => {
 	    	console.log("Fires when an end user clicks the Close (X) button");
             window.parent.postMessage({
-                frameHeight: 86,
+                frameHeight: 92,
                 frameWidth: 98
             }, '*');
 		});
