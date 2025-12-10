@@ -2,14 +2,73 @@
 
   <head>
     <title>CHAT PAGE FOR MEMBER</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1">
   </head>
 
   <body>
 	<script type='text/javascript'>
+       //チャット開始ボタン押下時、ウィンドウサイズと背景色変更
+       function embeddedMsgLoaded() {
+        var embeddedMsg = document.getElementById('embeddedMessagingModalOverlay');
+	    console.log(embeddedMsg);
+        if (!embeddedMsg) {
+          window.setTimeout(embeddedMsgLoaded, 500);
+          return;
+        }
+		embeddedMsg.style.display = 'none';
+		window.parent.postMessage({frameHeight: 480,frameWidth: 320}, '*');}
+		
+		let countTimeout = 0;
+		const maxExecutionsTimeout = 5;
+		//F5押下や画面リロード時、ウィンドウサイズと背景色変更
+		//チャット未開始の場合、対象Element検索が5回のみ（2秒）実施
+		function resetSizeAndBackground(){
+		   var embeddedMsg1 = document.getElementById('embeddedMessagingModalOverlay');
+		   countTimeout++;
+		   if(embeddedMsg1){
+			   console.log('find embeddedMessagingModalOverlay');
+			   embeddedMsg1.style.display = 'none';
+			   window.parent.postMessage({frameHeight: 480,frameWidth: 320}, '*'); 
+			   console.log(embeddedMsg1);
+		   }else{
+			   if (countTimeout < maxExecutionsTimeout) {
+			       window.setTimeout(resetSizeAndBackground, 500);
+			   }
+		       console.log('this is not embeddedMessagingModalOverlay');
+		   }
+		}
+		//画面初期表示とリロード区別し、ウィンドウと背景色変更
+		function reDefineSize(){
+		    const key = "child_iframe_loaded";
+			console.log("localStorage__:" + localStorage.getItem(key));
+			if(localStorage.getItem(key)){
+				console.log("F5/Reload__" + localStorage.getItem(key));
+				resetSizeAndBackground();
+			}else{
+				console.log("初回ロード");
+				localStorage.setItem(key,"1");
+			}
+		}
+		function changeChatWindowSize(){
+			var embededMsgFrm = document.getElementById('embeddedMessagingFrame');
+			if(embededMsgFrm){
+                var height = embededMsgFrm.clientHeight + 24;
+                var width = embededMsgFrm.clientWidth + 36;
+				console.log("clientHeight = " + height);
+				console.log("clientWidth = " + width);
+                window.parent.postMessage({
+                    frameHeight: height,
+                    frameWidth: width
+                 }, '*');
+			}else{
+				console.log('can not find embeddedMessagingFrame....');
+			}
+		}
+		//契約番号を事前チャットに渡す
 		var crmContractNo;
 		var fields = {};
 		console.log("crmContractNo: "  + crmContractNo);
-		window.addEventListener("onEmbeddedMessagingReady", function() {
+		window.addEventListener("onEmbeddedMessagingReady", () => {
 	    	console.log("Received the onEmbeddedMessagingReady event…");
 	    	console.log("the contractNo is "  + crmContractNo);
 	    	if (crmContractNo) {
@@ -17,6 +76,33 @@
 			}
 			embeddedservice_bootstrap.prechatAPI.setHiddenPrechatFields(fields);
 		});
+        //チャット開始ボタン
+		window.addEventListener("onEmbeddedMessagingButtonClicked", () => {
+	    	console.log("Fires the first time the chat button is clicked by the end user.…");
+	    	console.log("the contractNo is "  + crmContractNo);
+			embeddedMsgLoaded();
+		});
+	    //チャット最小化
+		window.addEventListener("onEmbeddedMessagingWindowMinimized", () => {
+	    	console.log("Fires when the messaging conversation window is minimized");
+			changeChatWindowSize();
+		});
+	    //×ボタン
+		window.addEventListener("onEmbeddedMessagingWindowClosed", () => {
+	    	console.log("Fires when an end user clicks the Close (X) button");
+            window.parent.postMessage({
+                frameHeight: 86,
+                frameWidth: 98
+            }, '*');
+		});
+	    //チャット最大化
+		window.addEventListener("onEmbeddedMessagingWindowMaximized", () => {
+	    	console.log("Fires when the messaging conversation window is maximized.");
+			embeddedMsgLoaded();
+		});
+		//画面リロードイベント
+		window.onreload = reDefineSize();
+        //メッセージング初期化処理
 		function initEmbeddedMessaging() {
 			try {
 				embeddedservice_bootstrap.settings.language = 'ja'; // For example, enter 'en' or 'en-US'
