@@ -6,95 +6,27 @@
 
   <body>
 	<script type='text/javascript'>
-       //チャット開始ボタン押下時、ウィンドウサイズと背景色変更
-       function embeddedMsgLoaded() {
-        var embeddedMsg = document.getElementById('embeddedMessagingModalOverlay');
-        if (!embeddedMsg) {
-          window.setTimeout(embeddedMsgLoaded, 500);
-          return;
-        }
-		embeddedMsg.style.display = 'none';
-		window.parent.postMessage({frameHeight: 480,frameWidth: 320}, '*');}
-		
-		let countTimeout = 0;
-		const maxExecutionsTimeout = 5;
-		//F5押下や画面リロード時、ウィンドウサイズと背景色変更
-		//チャット未開始の場合、対象Element検索が5回のみ（2秒）実施
-		function resetSizeAndBackground(){
-		   var embeddedMsg1 = document.getElementById('embeddedMessagingModalOverlay');
-		   countTimeout++;
-		   if(embeddedMsg1){
-			   embeddedMsg1.style.display = 'none';
-			   window.parent.postMessage({frameHeight: 480,frameWidth: 320}, '*'); 
-		   }else{
-			   if (countTimeout < maxExecutionsTimeout) {
-			       window.setTimeout(resetSizeAndBackground, 500);
-			   }
-		   }
-		}
-		//画面初期表示とリロード区別し、ウィンドウと背景色変更
-		function reDefineSize(){
-		    const key = "child_iframe_loaded";
-			if(localStorage.getItem(key)){
-				resetSizeAndBackground();
-			}else{
-				localStorage.setItem(key,"1");
-			}
-		}
-		function changeChatWindowSize(){
-			var embededMsgFrm = document.getElementById('embeddedMessagingFrame');
-			if(embededMsgFrm){
-                var height = embededMsgFrm.clientHeight + 24;
-                var width = embededMsgFrm.clientWidth + 36;
-                window.parent.postMessage({
-                    frameHeight: height,
-                    frameWidth: width
-                 }, '*');
-			}else{
-				console.log('can not find embeddedMessagingFrame....');
-			}
-		}
-		//契約番号を事前チャットに渡す
 		var crmContractNo;
 		var fields = {};
-		window.addEventListener("onEmbeddedMessagingReady", () => {
+		console.log("crmContractNo: "  + crmContractNo);
+		window.addEventListener("onEmbeddedMessagingReady", function() {
+	    	console.log("Received the onEmbeddedMessagingReady event…");
+	    	console.log("the contractNo is "  + crmContractNo);
 	    	if (crmContractNo) {
 		  		fields.contractNo = crmContractNo;
 			}
 			embeddedservice_bootstrap.prechatAPI.setHiddenPrechatFields(fields);
 		});
-        //チャット開始ボタン
-		window.addEventListener("onEmbeddedMessagingButtonClicked", () => {
-			embeddedMsgLoaded();
-		});
-	    //チャット最小化
-		window.addEventListener("onEmbeddedMessagingWindowMinimized", () => {
-			changeChatWindowSize();
-		});
-	    //×ボタン
-		window.addEventListener("onEmbeddedMessagingWindowClosed", () => {
-            window.parent.postMessage({
-                frameHeight: 86,
-                frameWidth: 98
-            }, '*');
-		});
-	    //チャット最大化
-		window.addEventListener("onEmbeddedMessagingWindowMaximized", () => {
-			embeddedMsgLoaded();
-		});
-		//画面リロードイベント
-		window.onreload = reDefineSize();
-        //メッセージング初期化処理
 		function initEmbeddedMessaging() {
 			try {
 				embeddedservice_bootstrap.settings.language = 'ja'; // For example, enter 'en' or 'en-US'
-	
+
 				embeddedservice_bootstrap.init(
-					'00D0l0000003BWM',
-					'Enhanced_Chat_Agents',
-					'https://d5h000004dhm5eae--dev.sandbox.my.site.com/ESWMessagingWebRelease',
+					'00D0l0000003gBr',
+					'MessagingWebReleaseTest',
+					'https://occ-crown--partial.sandbox.my.site.com/ESWMessagingWebRelease',
 					{
-						scrt2URL: 'https://d5h000004dhm5eae--dev.sandbox.my.salesforce-scrt.com'
+						scrt2URL: 'https://occ-crown--partial.sandbox.my.salesforce-scrt.com'
 					}
 				);
 			} catch (err) {
@@ -102,7 +34,7 @@
 			}
 		};
 	</script>
-　　<script type='text/javascript' src='https://d5h000004dhm5eae--dev.sandbox.my.site.com/ESWMessagingWebRelease/assets/js/bootstrap.min.js' onload='initEmbeddedMessaging()'></script>
+	<script type='text/javascript' src='https://occ-crown--partial.sandbox.my.site.com/ESWMessagingWebRelease/assets/js/bootstrap.min.js' onload='initEmbeddedMessaging()'></script>
   </body>
   
 </html>
