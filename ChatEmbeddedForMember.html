@@ -15,7 +15,8 @@
           window.setTimeout(embeddedMsgLoaded, 500);
           return;
         }
-		embeddedMsg.style.display = 'none';
+		//embeddedMsg.style.display = 'none';
+		embeddedMsg.remove();
 		window.parent.postMessage({frameHeight: 480,frameWidth: 320}, '*');}
 		
 		// let countTimeout = 0;
