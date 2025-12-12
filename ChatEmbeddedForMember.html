@@ -18,69 +18,69 @@
 		embeddedMsg.style.display = 'none';
 		window.parent.postMessage({frameHeight: 480,frameWidth: 320}, '*');}
 		
-		let countTimeout = 0;
-		const maxExecutionsTimeout = 5;
-		//F5押下や画面リロード時、ウィンドウサイズと背景色変更
-		//チャット未開始の場合、対象Element検索が5回のみ（2秒）実施
-		function resetSizeAndBackground(){
-		   var embeddedMsg1 = document.getElementById('embeddedMessagingModalOverlay');
-		   countTimeout++;
-		   if(embeddedMsg1){
-			   console.log('find embeddedMessagingModalOverlay');
-			   embeddedMsg1.style.display = 'none';
-			   window.parent.postMessage({frameHeight: 480,frameWidth: 320}, '*'); 
-			   console.log(embeddedMsg1);
-		   }else{
-			   if (countTimeout < maxExecutionsTimeout) {
-			       window.setTimeout(resetSizeAndBackground, 500);
-			   }
-		       console.log('this is not embeddedMessagingModalOverlay');
-		   }
-		}
-		//画面初期表示とリロード区別し、ウィンドウと背景色変更
-		function reDefineSize(){
-		    const key = "child_iframe_loaded";
-			console.log("localStorage__:" + localStorage.getItem(key));
-			if(localStorage.getItem(key)){
-				console.log("F5/Reload__" + localStorage.getItem(key));
-				resetSizeAndBackground();
-			}else{
-				console.log("初回ロード");
-				localStorage.setItem(key,"1");
-			}
-		}
-		function changeChatWindowSize(){
-			var embededMsgFrm = document.getElementById('embeddedMessagingFrame');
-			if(embededMsgFrm){
-                var height = embededMsgFrm.clientHeight + 30;
-                var width = embededMsgFrm.clientWidth + 36;
-				console.log("clientHeight = " + height);
-				console.log("clientWidth = " + width);
-                window.parent.postMessage({
-                    frameHeight: height,
-                    frameWidth: width
-                 }, '*');
-			}else{
-				console.log('can not find embeddedMessagingFrame....');
-			}
-		}
-		function initWindowSize(){
-			var embededMsgConBtn = document.getElementById('embeddedMessagingConversationButton');
-			if(embededMsgConBtn){
-                var height = embededMsgConBtn.clientHeight + 30;
-                var width = embededMsgConBtn.clientWidth + 36;
-				console.log("clientHeight = " + height);
-				console.log("clientWidth = " + width);
-                window.parent.postMessage({
-                    frameHeight: height,
-                    frameWidth: width
-                 }, '*');
-			}else{
-			　　console.log('can not find embeddedMessagingConversationButton....');
-				window.setTimeout(initWindowSize, 500);
-          　　　return;
-			}
-		}
+		// let countTimeout = 0;
+		// const maxExecutionsTimeout = 5;
+		// //F5押下や画面リロード時、ウィンドウサイズと背景色変更
+		// //チャット未開始の場合、対象Element検索が5回のみ（2秒）実施
+		// function resetSizeAndBackground(){
+		//    var embeddedMsg1 = document.getElementById('embeddedMessagingModalOverlay');
+		//    countTimeout++;
+		//    if(embeddedMsg1){
+		// 	   console.log('find embeddedMessagingModalOverlay');
+		// 	   embeddedMsg1.style.display = 'none';
+		// 	   window.parent.postMessage({frameHeight: 480,frameWidth: 320}, '*'); 
+		// 	   console.log(embeddedMsg1);
+		//    }else{
+		// 	   if (countTimeout < maxExecutionsTimeout) {
+		// 	       window.setTimeout(resetSizeAndBackground, 500);
+		// 	   }
+		//        console.log('this is not embeddedMessagingModalOverlay');
+		//    }
+		// }
+		// //画面初期表示とリロード区別し、ウィンドウと背景色変更
+		// function reDefineSize(){
+		//     const key = "child_iframe_loaded";
+		// 	console.log("localStorage__:" + localStorage.getItem(key));
+		// 	if(localStorage.getItem(key)){
+		// 		console.log("F5/Reload__" + localStorage.getItem(key));
+		// 		resetSizeAndBackground();
+		// 	}else{
+		// 		console.log("初回ロード");
+		// 		localStorage.setItem(key,"1");
+		// 	}
+		// }
+		// function changeChatWindowSize(){
+		// 	var embededMsgFrm = document.getElementById('embeddedMessagingFrame');
+		// 	if(embededMsgFrm){
+  //               var height = embededMsgFrm.clientHeight + 30;
+  //               var width = embededMsgFrm.clientWidth + 36;
+		// 		console.log("clientHeight = " + height);
+		// 		console.log("clientWidth = " + width);
+  //               window.parent.postMessage({
+  //                   frameHeight: height,
+  //                   frameWidth: width
+  //                }, '*');
+		// 	}else{
+		// 		console.log('can not find embeddedMessagingFrame....');
+		// 	}
+		// }
+		// function initWindowSize(){
+		// 	var embededMsgConBtn = document.getElementById('embeddedMessagingConversationButton');
+		// 	if(embededMsgConBtn){
+  //               var height = embededMsgConBtn.clientHeight + 30;
+  //               var width = embededMsgConBtn.clientWidth + 36;
+		// 		console.log("clientHeight = " + height);
+		// 		console.log("clientWidth = " + width);
+  //               window.parent.postMessage({
+  //                   frameHeight: height,
+  //                   frameWidth: width
+  //                }, '*');
+		// 	}else{
+		// 	　　console.log('can not find embeddedMessagingConversationButton....');
+		// 		window.setTimeout(initWindowSize, 500);
+  //         　　　return;
+		// 	}
+		// }
 		//契約番号を事前チャットに渡す
 		var crmContractNo;
 		var fields = {};
@@ -100,26 +100,26 @@
 	    	console.log("the contractNo is "  + crmContractNo);
 			embeddedMsgLoaded();
 		});
-	    //チャット最小化
-		window.addEventListener("onEmbeddedMessagingWindowMinimized", () => {
-	    	console.log("Fires when the messaging conversation window is minimized");
-			changeChatWindowSize();
-		});
-	    //×ボタン
-		window.addEventListener("onEmbeddedMessagingWindowClosed", () => {
-	    	console.log("Fires when an end user clicks the Close (X) button");
-            window.parent.postMessage({
-                frameHeight: 92,
-                frameWidth: 98
-            }, '*');
-		});
-	    //チャット最大化
-		window.addEventListener("onEmbeddedMessagingWindowMaximized", () => {
-	    	console.log("Fires when the messaging conversation window is maximized.");
-			embeddedMsgLoaded();
-		});
-		//画面リロードイベント
-		window.onreload = reDefineSize();
+	 //    //チャット最小化
+		// window.addEventListener("onEmbeddedMessagingWindowMinimized", () => {
+	 //    	console.log("Fires when the messaging conversation window is minimized");
+		// 	changeChatWindowSize();
+		// });
+	 //    //×ボタン
+		// window.addEventListener("onEmbeddedMessagingWindowClosed", () => {
+	 //    	console.log("Fires when an end user clicks the Close (X) button");
+  //           window.parent.postMessage({
+  //               frameHeight: 92,
+  //               frameWidth: 98
+  //           }, '*');
+		// });
+	 //    //チャット最大化
+		// window.addEventListener("onEmbeddedMessagingWindowMaximized", () => {
+	 //    	console.log("Fires when the messaging conversation window is maximized.");
+		// 	embeddedMsgLoaded();
+		// });
+		// //画面リロードイベント
+		// window.onreload = reDefineSize();
         //メッセージング初期化処理
 		function initEmbeddedMessaging() {
 			try {
