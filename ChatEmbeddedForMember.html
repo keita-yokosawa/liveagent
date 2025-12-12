@@ -52,10 +52,8 @@
 		function changeChatWindowSize(){
 			var embededMsgFrm = document.getElementById('embeddedMessagingFrame');
 			if(embededMsgFrm){
-                //var height = embededMsgFrm.clientHeight + 30;
-                //var width = embededMsgFrm.clientWidth + 36;
-				var height = embededMsgFrm.clientHeight;
-                var width = embededMsgFrm.clientWidth ;
+                var height = embededMsgFrm.clientHeight + 30;
+                var width = embededMsgFrm.clientWidth + 36;
 				console.log("clientHeight = " + height);
 				console.log("clientWidth = " + width);
                 window.parent.postMessage({
@@ -69,10 +67,8 @@
 		function initWindowSize(){
 			var embededMsgConBtn = document.getElementById('embeddedMessagingConversationButton');
 			if(embededMsgConBtn){
-                //var height = embededMsgConBtn.clientHeight + 30;
-                //var width = embededMsgConBtn.clientWidth + 36;
-				var height = embededMsgConBtn.clientHeight;
-                var width = embededMsgConBtn.clientWidth;
+                var height = embededMsgConBtn.clientHeight + 30;
+                var width = embededMsgConBtn.clientWidth + 36;
 				console.log("clientHeight = " + height);
 				console.log("clientWidth = " + width);
                 window.parent.postMessage({
@@ -113,10 +109,8 @@
 		window.addEventListener("onEmbeddedMessagingWindowClosed", () => {
 	    	console.log("Fires when an end user clicks the Close (X) button");
             window.parent.postMessage({
-                //frameHeight: 92,
-                //frameWidth: 98
-				frameHeight: 62,
-                frameWidth: 62
+                frameHeight: 92,
+                frameWidth: 98
             }, '*');
 		});
 	    //チャット最大化
