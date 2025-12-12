@@ -76,7 +76,9 @@
                     frameWidth: width
                  }, '*');
 			}else{
-				console.log('can not find embeddedMessagingConversationButton....');
+			　　console.log('can not find embeddedMessagingConversationButton....');
+				window.setTimeout(initWindowSize, 500);
+          　　　return;
 			}
 		}
 		//契約番号を事前チャットに渡す
