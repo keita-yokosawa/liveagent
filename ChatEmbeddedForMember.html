@@ -90,6 +90,7 @@
 		  		fields.contractNo = crmContractNo;
 			}
 			embeddedservice_bootstrap.prechatAPI.setHiddenPrechatFields(fields);
+			initWindowSize();
 		});
         //チャット開始ボタン
 		window.addEventListener("onEmbeddedMessagingButtonClicked", () => {
