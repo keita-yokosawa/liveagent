@@ -52,7 +52,7 @@
 		function changeChatWindowSize(){
 			var embededMsgFrm = document.getElementById('embeddedMessagingFrame');
 			if(embededMsgFrm){
-                var height = embededMsgFrm.clientHeight + 30;
+                var height = embededMsgFrm.clientHeight + 36;
                 var width = embededMsgFrm.clientWidth + 36;
 				console.log("clientHeight = " + height);
 				console.log("clientWidth = " + width);
@@ -67,7 +67,7 @@
 		function initWindowSize(){
 			var embededMsgConBtn = document.getElementById('embeddedMessagingConversationButton');
 			if(embededMsgConBtn){
-                var height = embededMsgConBtn.clientHeight + 30;
+                var height = embededMsgConBtn.clientHeight + 36;
                 var width = embededMsgConBtn.clientWidth + 36;
 				console.log("clientHeight = " + height);
 				console.log("clientWidth = " + width);
@@ -109,8 +109,8 @@
 		window.addEventListener("onEmbeddedMessagingWindowClosed", () => {
 	    	console.log("Fires when an end user clicks the Close (X) button");
             window.parent.postMessage({
-                frameHeight: 92,
-                frameWidth: 98
+                frameHeight: 96,
+                frameWidth: 96
             }, '*');
 		});
 	    //チャット最大化
