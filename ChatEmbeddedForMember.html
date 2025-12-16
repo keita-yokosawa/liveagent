@@ -27,7 +27,7 @@
 		   countTimeout++;
 		   if(embeddedMsg1){
 			   console.log('find embeddedMessagingModalOverlay');
-			   //embeddedMsg1.style.display = 'none';
+			   embeddedMsg1.style.display = 'none';
 			   window.parent.postMessage({frameHeight: 480,frameWidth: 320}, '*'); 
 			   console.log(embeddedMsg1);
 		   }else{
@@ -71,8 +71,11 @@
 		function initWindowSize(){
 			var embededMsgConBtn = document.getElementById('embeddedMessagingConversationButton');
 			if(embededMsgConBtn){
-                var height = embededMsgConBtn.clientHeight + 30;
-                var width = embededMsgConBtn.clientWidth + 36;
+				console.log("embededMsgConBtn=" + embededMsgConBtn);
+                //var height = embededMsgConBtn.clientHeight + 30;
+                //var width = embededMsgConBtn.clientWidth + 36;
+                var height = 92;
+                var width = 98;
 				console.log("clientHeight = " + height);
 				console.log("clientWidth = " + width);
                 window.parent.postMessage({
