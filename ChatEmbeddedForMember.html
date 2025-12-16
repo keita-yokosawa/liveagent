@@ -27,7 +27,7 @@
 		   countTimeout++;
 		   if(embeddedMsg1){
 			   console.log('find embeddedMessagingModalOverlay');
-			   embeddedMsg1.style.display = 'none';
+			   //embeddedMsg1.style.display = 'none';
 			   window.parent.postMessage({frameHeight: 480,frameWidth: 320}, '*'); 
 			   console.log(embeddedMsg1);
 		   }else{
@@ -56,7 +56,7 @@
 				console.log("clientWidth1 = " + embededMsgFrm.width);
 				console.log("clientHeight2 = " + embededMsgFrm.clientHeight);
 				console.log("clientWidth2 = " + embededMsgFrm.clientWidth);
-                var height = embededMsgFrm.clientHeight + 36;
+                var height = embededMsgFrm.clientHeight + 30;
                 var width = embededMsgFrm.clientWidth + 36;
 				console.log("clientHeight = " + height);
 				console.log("clientWidth = " + width);
@@ -71,7 +71,7 @@
 		function initWindowSize(){
 			var embededMsgConBtn = document.getElementById('embeddedMessagingConversationButton');
 			if(embededMsgConBtn){
-                var height = embededMsgConBtn.clientHeight + 36;
+                var height = embededMsgConBtn.clientHeight + 30;
                 var width = embededMsgConBtn.clientWidth + 36;
 				console.log("clientHeight = " + height);
 				console.log("clientWidth = " + width);
@@ -113,8 +113,8 @@
 		window.addEventListener("onEmbeddedMessagingWindowClosed", () => {
 	    	console.log("Fires when an end user clicks the Close (X) button");
             window.parent.postMessage({
-                frameHeight: 96,
-                frameWidth: 96
+                frameHeight: 92,
+                frameWidth: 98
             }, '*');
 		});
 	    //チャット最大化
