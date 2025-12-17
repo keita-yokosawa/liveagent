@@ -71,17 +71,21 @@
 		function initWindowSize(){
 			var embededMsgConBtn = document.getElementById('embeddedMessagingConversationButton');
 			if(embededMsgConBtn){
-				console.log("embededMsgConBtn=" + embededMsgConBtn);
-                //var height = embededMsgConBtn.clientHeight + 30;
-                //var width = embededMsgConBtn.clientWidth + 36;
-                var height = 92;
-                var width = 98;
-				console.log("clientHeight = " + height);
-				console.log("clientWidth = " + width);
-                window.parent.postMessage({
-                    frameHeight: height,
-                    frameWidth: width
-                 }, '*');
+				var isMaxed = sessionStorage.getItem("isMaximized");
+				console.log("isMaxed = " + isMaxed);
+				if(!isMaxed) && (isMaxed != "1"){ 
+				    console.log("embededMsgConBtn=" + embededMsgConBtn);
+                    //var height = embededMsgConBtn.clientHeight + 30;
+                    //var width = embededMsgConBtn.clientWidth + 36;
+                    var height = 92;
+                    var width = 98;
+				    console.log("clientHeight = " + height);
+				    console.log("clientWidth = " + width);
+                    window.parent.postMessage({
+                        frameHeight: height,
+                        frameWidth: width
+                    }, '*');
+				}
 			}else{
 			　　console.log('can not find embeddedMessagingConversationButton....');
 				window.setTimeout(initWindowSize, 500);
@@ -111,6 +115,8 @@
 		window.addEventListener("onEmbeddedMessagingWindowMinimized", () => {
 	    	console.log("Fires when the messaging conversation window is minimized");
 			changeChatWindowSize();
+			sessionStorage.setItem("isMaximized","0");
+			console.log("window is Maximized=" + sessionStorage.getItem("isMaximized"));
 		});
 	    //×ボタン
 		window.addEventListener("onEmbeddedMessagingWindowClosed", () => {
@@ -124,6 +130,8 @@
 		window.addEventListener("onEmbeddedMessagingWindowMaximized", () => {
 	    	console.log("Fires when the messaging conversation window is maximized.");
 			embeddedMsgLoaded();
+			sessionStorage.setItem("isMaximized","1");
+			console.log("window is Maximized=" + sessionStorage.getItem("isMaximized"));
 		});
 		//画面リロードイベント
 		window.onreload = reDefineSize();
