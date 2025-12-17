@@ -40,13 +40,13 @@
 		//画面初期表示とリロード区別し、ウィンドウと背景色変更
 		function reDefineSize(){
 		    const key = "child_iframe_loaded";
-			console.log("localStorage__:" + localStorage.getItem(key));
-			if(localStorage.getItem(key)){
-				console.log("F5/Reload__" + localStorage.getItem(key));
+			console.log("localStorage__:" + sessionStorage.getItem(key));
+			if(sessionStorage.getItem(key)){
+				console.log("F5/Reload__" + sessionStorage.getItem(key));
 				resetSizeAndBackground();
 			}else{
 				console.log("初回ロード");
-				localStorage.setItem(key,"1");
+				sessionStorage.setItem(key,"1");
 			}
 		}
 		function changeChatWindowSize(){
