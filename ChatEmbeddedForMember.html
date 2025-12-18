@@ -28,8 +28,7 @@
 		   if(embeddedMsg1){
 			   console.log('find embeddedMessagingModalOverlay');
 			   embeddedMsg1.style.display = 'none';
-			   window.parent.postMessage({frameHeight: 480,frameWidth: 320}, '*'); 
-			   console.log(embeddedMsg1);
+			   window.parent.postMessage({frameHeight: 480,frameWidth: 320}, '*');
 		   }else{
 			   if (countTimeout < maxExecutionsTimeout) {
 			       window.setTimeout(resetSizeAndBackground, 500);
@@ -52,8 +51,6 @@
 		function changeChatWindowSize(){
 			var embededMsgFrm = document.getElementById('embeddedMessagingFrame');
 			if(embededMsgFrm){
-				console.log("clientHeight1 = " + embededMsgFrm.height);
-				console.log("clientWidth1 = " + embededMsgFrm.width);
 				console.log("clientHeight2 = " + embededMsgFrm.clientHeight);
 				console.log("clientWidth2 = " + embededMsgFrm.clientWidth);
                 var height = embededMsgFrm.clientHeight + 30;
@@ -73,10 +70,7 @@
 			if(embededMsgConBtn){
 				var isMaxed = sessionStorage.getItem("isMaximized");
 				console.log("isMaxed = " + isMaxed);
-				if(!isMaxed || (isMaxed != "1")){ 
-				    console.log("embededMsgConBtn=" + embededMsgConBtn);
-                    //var height = embededMsgConBtn.clientHeight + 30;
-                    //var width = embededMsgConBtn.clientWidth + 36;
+				if(isMaxed && (isMaxed != "1")){ 
                     var height = 92;
                     var width = 98;
 				    console.log("clientHeight = " + height);
@@ -87,9 +81,9 @@
                     }, '*');
 				}
 			}else{
-			　　console.log('can not find embeddedMessagingConversationButton....');
+				console.log('can not find embeddedMessagingConversationButton....');
 				window.setTimeout(initWindowSize, 500);
-          　　　return;
+          		return;
 			}
 		}
 		//契約番号を事前チャットに渡す
@@ -139,8 +133,6 @@
 		function initEmbeddedMessaging() {
 			try {
 				embeddedservice_bootstrap.settings.language = 'ja'; // For example, enter 'en' or 'en-US'
-				//embeddedservice_bootstrap.settings.chatbotAvatarImgURL =　'https://occ-crown.file.force.com/sfc/dist/version/renditionDownload?rendition=ORIGINAL_Png&versionId=0685h00000Kxi6r&operationContext=DELIVERY&contentId=05T5h00000ymemk&page=0&d=/a/5h000001FHPG/VSytNPVIC5PtCqJR8TPS_3GkLtE9FhHsu_BjQQHJ9u8&oid=00D5h000004dHm5&dpt=null&viewId=';
-	
 				embeddedservice_bootstrap.init(
 					'00D0l0000003BWM',
 					'Enhanced_Chat_Agents',
